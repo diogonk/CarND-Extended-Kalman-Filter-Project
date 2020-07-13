@@ -54,10 +54,7 @@ FusionEKF::FusionEKF() {
       0, 0, 0, 1;
 
   ekf_.Q_ = MatrixXd(4, 4);
-  ekf_.Q_ << 0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0;
+
 }
 
 /**
@@ -124,9 +121,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 	ekf_.F_(1, 3) = dt;
 
 
-	double dt2 = dt*dt;
-	double dt3 = dt2*dt;
-	double dt4 = dt3*dt;
+	float  dt2 = dt*dt;
+	float  dt3 = dt2*dt;
+	float  dt4 = dt3*dt;
 
   ekf_.Q_ << dt4 * noise_ax / 4, 0, dt3 * noise_ax / 2, 0,
              0, dt4 * noise_ay / 4, 0, dt3 * noise_ay / 2,
