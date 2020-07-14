@@ -54,9 +54,10 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
 
   	//pre-compute a set of terms to avoid repeated calculation
   	float c1 = px*px+py*py;
-   float epsilon = 0.00001;
+   float epsilon = 0.0001;
 
 	if(c1 < epsilon ) {
+      cout << "Error, avoiding division by zero" << endl;
 		return Hj;
 	}
   	float c2 = sqrt(c1);
